@@ -9,6 +9,7 @@ import {
   Button,
   Dialog,
   DialogContent,
+  DialogTitle,
   IconButton,
   LinearProgress,
   Snackbar,
@@ -230,21 +231,27 @@ const DIGITAL_LOVE_NOTES = [
 
 // Poems and letters module (includes images placed in /public/Poem)
 const POEMS = [
-  // Imported letter images from public/Poem
-  {id : 1, title: "A Letter for You", img: "/Poem/Kuttymaa.jpeg", text: `To my love — every word in this letter is a piece of my heart. I hope it makes you smile.` },
-  
-  { id: 4, title: "Love Forever", img: "/Poem/love forever.jpeg", text: `For you — love forever.` },
-  { id: 5, title: "Love Forever 2", img: "/Poem/love forever2.jpeg", text: `Another little note to say I love you.` },
-  { id: 6, title: "Mah Lover", img: "/Poem/Mah Lover.jpeg", text: `To my lover — you color my world.` },
-  { id: 7, title: "Mah Lover 2", img: "/Poem/Mah lover2.jpeg", text: `Still thinking about you.` },
-  { id: 8, title: "Mah Wife Written 1", img: "/Poem/Mah wife written for us.jpeg", text: `A small letter written with all my heart.` },
-  { id: 9, title: "Mah Wife Written 2", img: "/Poem/mah wife written.jpeg", text: `I cherish every memory with you.` },
-  { id: 10, title: "Mah Wife Written 3", img: "/Poem/mah wife written2.jpeg", text: `You are my home and my adventure.` },
-  { id: 11, title: "Mah Wife Written 4", img: "/Poem/mah wife written3.jpeg", text: `Always and forever.` },
-  { id: 12, title: "Mah Wife Written 5", img: "/Poem/mah wife written4.jpeg", text: `Little words, big love.` },
-  { id: 13, title: "Mah Wife Written 6", img: "/Poem/mah wife written5.jpeg", text: `A letter for you.` },
-  { id: 14, title: "Value of Love", img: "/Poem/Value of love.jpeg", text: `You taught me the value of love.` },
-  { id: 15, title: "Without You", img: "/Poem/withoutyou.jpeg", text: `I am incomplete without you.` },
+  { id: 1, title: "Adiye", img: "/Poem/Adiye.jpeg", text: "To my love — every word in this letter is a piece of my heart. I hope it makes you smile." },
+  { id: 2, title: "Adiye2", img: "/Poem/Adiye2.jpeg", text: "For you — love forever." },
+  { id: 3, title: "Aval Mugam", img: "/Poem/Aval Mugam.jpeg", text: "Another little note to say I love you." },
+  { id: 4, title: "Azhagu", img: "/Poem/Azhagu.jpeg", text: "To my lover — you color my world." },
+  { id: 5, title: "En Kuttymaa", img: "/Poem/En Kuttymaa.jpeg", text: "Still thinking about you." },
+  { id: 6, title: "Enake Enaka", img: "/Poem/Enake Enaka.jpeg", text: "A small letter written with all my heart." },
+  { id: 7, title: "Ennaval En Ennathil", img: "/Poem/Ennaval En Ennathil.jpeg", text: "I cherish every memory with you." },
+  { id: 8, title: "Ennaval En Ennathil2", img: "/Poem/Ennaval En Ennathil2.jpeg", text: "You are my home and my adventure." },
+  { id: 9, title: "Ennavale", img: "/Poem/Ennavale.jpeg", text: "Always and forever." },
+  { id: 10, title: "Iniyavale", img: "/Poem/Iniyavale.jpeg", text: "Little words, big love." },
+  { id: 11, title: "Kadhaliye unakaka", img: "/Poem/Kadhaliye unakaka.jpeg", text: "A letter for you." },
+  { id: 12, title: "Kadhaliye unakaka2", img: "/Poem/Kadhaliye unakaka2.jpeg", text: "You taught me the value of love." },
+  { id: 13, title: "Kuttymaa ", img: "/Poem/Kuttymaa .jpeg", text: "I am incomplete without you." },
+  { id: 14, title: "Kuttymaa for Lovers Day", img: "/Poem/Kuttymaa for Lovers Day.jpeg", text: "A sweet moment I want to remember forever." },
+  { id: 15, title: "MINE CRAZY", img: "/Poem/MINE CRAZY.jpeg", text: "You are my entire world." },
+  { id: 16, title: "Nee Thantha Thanimai", img: "/Poem/Nee Thantha Thanimai.jpeg", text: "Just a special note to make you smile." },
+  { id: 17, title: "P💞D", img: "/Poem/P💞D.jpeg", text: "You hold the key to my heart." },
+  { id: 18, title: "Thagamey ithu poiyada", img: "/Poem/Thagamey ithu poiyada.jpeg", text: "The most beautiful story I know." },
+  { id: 19, title: "Thodakkam", img: "/Poem/Thodakkam.jpeg", text: "Always on my mind." },
+  { id: 20, title: "Waiting For All Pleasure", img: "/Poem/Waiting For All Pleasure.jpeg", text: "Love you to the moon and back." },
+  { id: 21, title: "Words From My Heart", img: "/Poem/Words From My Heart.jpeg", text: "Everything I do, I do it for you." },
 ];
 
 const OPEN_WHEN_LETTERS = [
@@ -1364,6 +1371,93 @@ function HeartRainBackground() {
   );
 }
 
+function MemoryLane() {
+  const [index, setIndex] = useState(null);
+  const [topics, setTopics] = useState({});
+  const [editing, setEditing] = useState(null);
+  const [openFolder, setOpenFolder] = useState(null);
+
+  useEffect(() => {
+    fetch('/image_index.json')
+      .then((r) => r.json())
+      .then((j) => setIndex(j))
+      .catch(() => setIndex({}));
+    // load topics from localStorage
+    const saved = {};
+    try {
+      Object.keys(localStorage).forEach((k) => {
+        if (k.startsWith('memory_topic_')) saved[k.replace('memory_topic_', '')] = localStorage.getItem(k);
+      });
+    } catch (e) {}
+    setTopics(saved);
+  }, []);
+
+  const saveTopic = (folder, value) => {
+    const key = `memory_topic_${folder}`;
+    localStorage.setItem(key, value);
+    setTopics((t) => ({ ...t, [folder]: value }));
+    setEditing(null);
+  };
+
+  if (!index) return (
+    <Box sx={{ textAlign: 'center', color: 'white', py: 4 }}>Loading Memory Lane…</Box>
+  );
+
+  return (
+    <Box sx={{ mb: 6 }}>
+      <Typography variant="h5" align="center" color="white" fontWeight="bold" mb={2} sx={{ fontFamily: "'Outfit', sans-serif" }}>
+        🗂️ Memory Lane (Images)
+      </Typography>
+      <Grid container spacing={3} sx={{ maxWidth: 1100, mx: 'auto' }}>
+        {Object.entries(index).map(([folder, files]) => (
+          <Grid item xs={12} sm={6} md={4} key={folder}>
+            <Card sx={{ p: 2, borderRadius: 3, background: 'rgba(255,255,255,0.06)', minHeight: 190 }}>
+              <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1 }}>
+                <Typography fontWeight="bold" sx={{ color: '#ffd54f' }}>{folder}</Typography>
+                <Box>
+                  {editing === folder ? (
+                    <>
+                      <TextField size="small" defaultValue={topics[folder] || ''} onBlur={(e) => saveTopic(folder, e.target.value)} autoFocus />
+                    </>
+                  ) : (
+                    <Button size="small" onClick={() => setEditing(folder)} sx={{ bgcolor: '#ff4081', color: '#fff' }}>Add/Change Topic</Button>
+                  )}
+                </Box>
+              </Box>
+              <Typography variant="subtitle1" align="center" sx={{ color: '#ff4081', display: 'block', mb: 1.5, fontWeight: 'bold', fontStyle: 'italic', letterSpacing: 0.5, textShadow: '0 2px 4px rgba(255, 64, 129, 0.2)' }}>
+                {topics[folder] ? `✨ Topic: ${topics[folder]} ✨` : 'No topic set — click to add.'}
+              </Typography>
+
+              <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
+                {(files || []).slice(0, 6).map((f) => (
+                  <Box component="img" key={f} src={encodeURI(`/image/${folder}/${f}`)} alt={f} sx={{ width: 80, height: 80, objectFit: 'cover', borderRadius: 1, border: '1px solid rgba(255,255,255,0.06)' }} onClick={() => setOpenFolder(folder)} />
+                ))}
+              </Box>
+              <Box sx={{ mt: 2, display: 'flex', gap: 1, justifyContent: 'flex-end' }}>
+                <Button size="small" onClick={() => setOpenFolder(folder)} sx={{ borderRadius: 20 }}>View All</Button>
+              </Box>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
+
+      <Dialog open={!!openFolder} onClose={() => setOpenFolder(null)} fullWidth maxWidth="lg">
+        <DialogTitle sx={{ bgcolor: '#fafafa' }}>{openFolder}</DialogTitle>
+        <DialogContent sx={{ bgcolor: '#fff' }}>
+          <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: 12 }}>
+            {(index?.[openFolder] || []).map((f) => (
+              <Box key={f} sx={{ textAlign: 'center' }}>
+                <Box component="img" src={encodeURI(`/image/${openFolder}/${f}`)} alt={f} sx={{ width: '100%', height: 200, objectFit: 'cover', borderRadius: 2 }} />
+                <Typography variant="caption" sx={{ display: 'block', mt: 1 }}>{f}</Typography>
+              </Box>
+            ))}
+          </Box>
+        </DialogContent>
+      </Dialog>
+    </Box>
+  );
+}
+
 export default function App() {
   const [activeTab, setActiveTab] = useState("home");
   const [reasonsCount, setReasonsCount] = useState(1247);
@@ -2103,7 +2197,7 @@ export default function App() {
           >
               <Box
               component="img"
-              src="\image\she did for us.jpeg"
+              src="/image/profile/WhatsApp Image 2026-06-16 at 2.46.36 PM.jpeg"
               alt="Kuttymaa"
               sx={{
                 width: { xs: 260, md: 320 },
@@ -2443,6 +2537,8 @@ export default function App() {
                 ))}
               </Grid>
             </Box>
+
+            <MemoryLane />
 
             {/* Soundtracks */}
             <Box sx={{ mb: 6 }}>
@@ -2941,7 +3037,7 @@ export default function App() {
                     🎮 Couple Quiz Challenge
                   </Typography>
                   {!quizFinished ? (
-                    <Box textAlign="center" sx={{ animation: "fadeInUp 0.5s ease" }}>
+                    <Box sx={{ textAlign: 'center', animation: "fadeInUp 0.5s ease" }}>
                       <Typography sx={{ color: "#d81b60", fontWeight: "bold", mb: 2 }}>Question {quizStep + 1} of {COUPLE_QUIZ.length}</Typography>
                       <Typography variant="h6" sx={{ color: "#374151", mb: 4, fontWeight: "bold" }}>{COUPLE_QUIZ[quizStep].q}</Typography>
                       <Grid container spacing={2}>
@@ -2963,7 +3059,7 @@ export default function App() {
                       )}
                     </Box>
                   ) : (
-                    <Box textAlign="center">
+                    <Box sx={{ textAlign: 'center' }}>
                       <EmojiEventsIcon sx={{ fontSize: 60, color: "#ffd54f", mb: 2 }} />
                       <Typography variant="h4" sx={{ fontFamily: "'Pacifico',cursive", color: "#d81b60", mb: 2 }}>Quiz Complete!</Typography>
                       <Typography sx={{ fontSize: "1.2rem", color: "#4a4a4a" }}>
@@ -3309,7 +3405,7 @@ export default function App() {
         </Box>
 
         {/* Final Surprise Button Section */}
-        <Box textAlign="center" sx={{ py: 8, position: "relative", zIndex: 1 }}>
+        <Box sx={{ textAlign: 'center', py: 8, position: "relative", zIndex: 1 }}>
           <Typography
             variant="h3"
             color="white"
@@ -3377,7 +3473,7 @@ export default function App() {
         </Box>
 
         {/* ── Secret Final Surprise ── */}
-        <Box textAlign="center" sx={{ py: 6, pb: 10, position: "relative", zIndex: 1 }}>
+        <Box sx={{ textAlign: 'center', py: 6, pb: 10, position: "relative", zIndex: 1 }}>
           <Typography sx={{ color: "rgba(255,255,255,0.5)", fontFamily: "'Outfit',sans-serif", fontSize: "0.9rem", mb: 3, letterSpacing: "2px", textTransform: "uppercase" }}>
             Scroll down... one last thing awaits
           </Typography>
@@ -3842,7 +3938,7 @@ export default function App() {
 
               {/* Play button */}
               {VOICE_NOTES[openVoiceNote].src ? (
-                <Box textAlign="center">
+                <Box sx={{ textAlign: 'center' }}>
                   <IconButton
                     onClick={toggleVoiceNote}
                     sx={{
@@ -3897,7 +3993,7 @@ export default function App() {
 
         {heartbeatStage === 2 && (
           <Box sx={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center", animation: "fadeInUp 3s ease" }}>
-            <Box textAlign="center">
+            <Box sx={{ textAlign: 'center' }}>
               <Typography sx={{ fontFamily: "'Pacifico',cursive", color: "#ff4081", fontSize: "3rem", mb: 6 }}>
                 Kuttymaa's Surprise Project
               </Typography>
@@ -3958,7 +4054,7 @@ export default function App() {
       {/* ── Open When Letter Dialog ── */}
       <Dialog open={openWhenLetter !== null} onClose={() => setOpenWhenLetter(null)} PaperProps={{ sx: { borderRadius: 6, p: 4, maxWidth: 450, background: openWhenLetter !== null ? OPEN_WHEN_LETTERS[openWhenLetter].bg : "#fff", color: "#fff" } }}>
         {openWhenLetter !== null && (
-          <Box textAlign="center">
+          <Box sx={{ textAlign: 'center' }}>
             <Typography sx={{ fontSize: 60, mb: 2 }}>{OPEN_WHEN_LETTERS[openWhenLetter].emoji}</Typography>
             <Typography variant="h5" sx={{ fontFamily: "'Outfit',sans-serif", fontWeight: "bold", mb: 3 }}>
               {OPEN_WHEN_LETTERS[openWhenLetter].label}
