@@ -72,9 +72,9 @@ const IMAGE_LIST = [
   "/image/First Day Of Chat.jpeg",
   "/image/Childish.jpeg",
   "/image/Dam.jpeg",
-  "/image/babymaa2.jpeg",
-  "/image/babymaa3.jpeg",
-  "/image/babymaa1.jpeg",
+  "/image/kuttymaa2.jpeg",
+  "/image/kuttymaa3.jpeg",
+  "/image/kuttymaa1.jpeg",
   "/image/first meet 1.jpeg",
   "/image/First meet up 2 hand.jpeg",
   "/image/first meet up 3 hand.jpeg",
@@ -231,7 +231,7 @@ const DIGITAL_LOVE_NOTES = [
 // Poems and letters module (includes images placed in /public/Poem)
 const POEMS = [
   // Imported letter images from public/Poem
-  {id : 1, title: "A Letter for You", img: "/Poem/Babymaa.jpeg", text: `To my love — every word in this letter is a piece of my heart. I hope it makes you smile.` },
+  {id : 1, title: "A Letter for You", img: "/Poem/Kuttymaa.jpeg", text: `To my love — every word in this letter is a piece of my heart. I hope it makes you smile.` },
   
   { id: 4, title: "Love Forever", img: "/Poem/love forever.jpeg", text: `For you — love forever.` },
   { id: 5, title: "Love Forever 2", img: "/Poem/love forever2.jpeg", text: `Another little note to say I love you.` },
@@ -761,7 +761,7 @@ function NightSky() {
         🌙 The Night Sky
       </Typography>
       <Typography variant="body2" sx={{ color: "rgba(255,255,255,0.7)", mb: 3 }}>
-        Click on any star in Babymaa's night sky to reveal a secret thought...
+        Click on any star in Kuttymaa's night sky to reveal a secret thought...
       </Typography>
 
       <Box
@@ -944,7 +944,7 @@ function TypewriterFinalSequence({ onClose }) {
     "all the paths life could have taken,",
     "I'm grateful every single day that they led me to you.",
     "Meeting you was the best thing that ever happened to me. ❤️",
-    "For Babymaa, with all my love. 💖",
+    "For Kuttymaa, with all my love. 💖",
     "See you in our next chapter..."
   ];
 
@@ -982,7 +982,7 @@ function TypewriterFinalSequence({ onClose }) {
           Forever Yours.
         </Typography>
         <Typography variant="body1" sx={{ color: "rgba(255,255,255,0.7)", mb: 4, fontFamily: "'Outfit', sans-serif" }}>
-          Forever yours, Babymaa! ❤️
+          Forever yours, Kuttymaa! ❤️
         </Typography>
         <Button variant="contained" onClick={onClose} sx={{ bgcolor: "#ff4081", color: "#fff", borderRadius: 20 }}>
           Back to Dashboard
@@ -1407,7 +1407,7 @@ export default function App() {
   // Vault unlock handler
   const handleUnlockVault = () => {
     const pw = vaultPassword.trim().toLowerCase();
-    if (pw === "babymaa" || pw === "jessy" || pw === "baby" || pw === "b" || pw === "j") {
+    if (pw === "kuttymaa" || pw === "jessy" || pw === "kutty" || pw === "k" || pw === "j") {
       setVaultUnlocked(true);
       setVaultError("");
     } else {
@@ -1471,13 +1471,13 @@ export default function App() {
 
   const saveCapsule = () => {
     if (capsuleMessage.trim()) {
-      localStorage.setItem("babymaa_capsule", capsuleMessage);
+      localStorage.setItem("kuttymaa_capsule", capsuleMessage);
       setCapsuleSaved(true);
     }
   };
 
   useEffect(() => {
-    const saved = localStorage.getItem("babymaa_capsule");
+    const saved = localStorage.getItem("kuttymaa_capsule");
     if (saved) setCapsuleSaved(true);
   }, []);
 
@@ -1858,7 +1858,7 @@ export default function App() {
 
   const surpriseSlides = [
     {
-      title: "For Babymaa, my love! 🎉",
+      title: "For Kuttymaa, my love! 🎉",
       content: "Today is a beautiful day, because it makes room for you, your laughter, and the gentle warmth you bring into every moment. Click the arrows to read your special story... ❤️",
       icon: <CakeIcon sx={{ fontSize: 60, color: "#ff4081" }} />,
     },
@@ -1916,7 +1916,7 @@ export default function App() {
       <audio
         ref={audioRef}
         loop
-        src="/MINE BABYMAA SONGS.mp3"
+        src="/MINE KUTTYMAA SONGS.mp3"
       />
 
       {/* Letter Audio */}
@@ -2066,7 +2066,7 @@ export default function App() {
                 lineHeight: 1.3,
               }}
             >
-              Forever yours, Babymaa! ❤️
+              Forever yours, Kuttymaa! ❤️
             </Typography>
           </Box>
 
@@ -2101,10 +2101,10 @@ export default function App() {
               },
             }}
           >
-            <Box
+              <Box
               component="img"
               src="\image\she did for us.jpeg"
-              alt="Babymaa"
+              alt="Kuttymaa"
               sx={{
                 width: { xs: 260, md: 320 },
                 height: { xs: 260, md: 320 },
@@ -2345,7 +2345,7 @@ export default function App() {
               <Grid item xs={12} md={6}>
                 <Card sx={{ p: 4, borderRadius: 6, background: "rgba(255,255,255,0.9)", border: "1.5px solid rgba(255,255,255,0.6)", height: "100%" }}>
                   <Typography variant="h6" color="#d81b60" fontWeight="bold" gutterBottom sx={{ fontFamily: "'Outfit', sans-serif" }}>
-                    😂 Things Babymaa Does (Affectionate Roasts)
+                    😂 Things Kuttymaa Does (Affectionate Roasts)
                   </Typography>
                   <Box sx={{ display: "flex", flexDirection: "column", gap: 1.5, mt: 2 }}>
                     {[
@@ -2366,7 +2366,7 @@ export default function App() {
               <Grid item xs={12}>
                 <Card sx={{ p: 4, borderRadius: 6, background: "rgba(255,255,255,0.9)", border: "2px solid rgba(255,64,129,0.15)" }}>
                   <Typography variant="h6" color="#d81b60" fontWeight="bold" gutterBottom sx={{ fontFamily: "'Outfit', sans-serif" }}>
-                    📜 Terms & Conditions of Loving Babymaa
+                    📜 Terms & Conditions of Loving Kuttymaa
                   </Typography>
                   <Grid container spacing={2} sx={{ mt: 1 }}>
                     {[
@@ -2623,7 +2623,7 @@ export default function App() {
                   <Card sx={{ p: 4, borderRadius: 6, background: "linear-gradient(135deg, #fff0f5, #fff)", border: "2px solid #ff4081", height: "100%", position: "relative" }}>
                     <IconButton onClick={() => setVaultUnlocked(false)} sx={{ position: "absolute", top: 10, right: 10 }} size="small"><LockIcon sx={{ color: "#ff4081" }} /></IconButton>
                     <Typography variant="h5" color="#c2185b" fontWeight="bold" align="center" mb={3} sx={{ fontFamily: "'Outfit', sans-serif" }}>
-                      🔑 Welcome, Babymaa.
+                      🔑 Welcome, Kuttymaa.
                     </Typography>
                     
                     <Box sx={{ display: "flex", flexDirection: "column", gap: 3, textAlign: "left" }}>
@@ -2654,7 +2654,7 @@ export default function App() {
               <Grid item xs={12} md={6}>
                 <Card sx={{ p: 4, borderRadius: 6, background: "rgba(255,255,255,0.9)", border: "1.5px solid rgba(255,255,255,0.6)", height: "100%", display: "flex", flexDirection: "column", justifyContent: "center" }}>
                   <Typography variant="h5" color="#d81b60" fontWeight="bold" align="center" mb={3} sx={{ fontFamily: "'Outfit', sans-serif" }}>
-                    📦 Emergency Babymaa Kit
+                    📦 Emergency Kuttymaa Kit
                   </Typography>
                   <Grid container spacing={2} sx={{ justifyContent: "center" }}>
                     {[
@@ -2782,7 +2782,7 @@ export default function App() {
                       <FavoriteIcon sx={{ color: "#ff4081", fontSize: 50 }} />
                     </Box>
                     <Typography variant="h4" sx={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700, color: "#d81b60", mb: 1.5 }}>
-                      To Babymaa, My Love 💌
+                      To Kuttymaa, My Love 💌
                     </Typography>
                     <Typography variant="body1" sx={{ color: "#5c5c5c", fontSize: "1.1rem", mb: 3 }}>
                       Click to open your special handwritten letter
@@ -2795,7 +2795,7 @@ export default function App() {
                   <Box sx={{ animation: "fadeInUp 0.8s cubic-bezier(0.19, 1, 0.22, 1)", textAlign: "left" }}>
                     <IconButton onClick={(e) => { e.stopPropagation(); closeLetter(); }} sx={{ position: "absolute", right: 20, top: 20 }}><CloseIcon /></IconButton>
                     <Typography variant="h3" align="center" sx={{ fontFamily: "'Pacifico', cursive", color: "#d81b60", mb: 4 }}>
-                      My Dearest Babymaa,
+                      My Dearest Kuttymaa,
                     </Typography>
                     <Typography variant="body1" sx={{ fontFamily: "'Outfit', sans-serif", color: "#374151", lineHeight: 2.0, fontSize: "1.1rem", mb: 4 }}>
                       Words often fail me when I try to write down what you mean to me. You came into my life like a quiet breeze, and before I knew it, you became my entire atmosphere. Every laugh we share, every late-night call where we lose track of time, and even the moments when distance makes things hard, only serves to show me how special what we have is. <br/><br/>
@@ -3031,7 +3031,7 @@ export default function App() {
                         <Button
                           size="small" variant="contained"
                           onClick={() => {
-                            setCurrentReason("Date: June 13, 2030 \n\nHey Babymaa, \n\nWe still laugh at the same silly things. We still annoy each other. And somehow I still fall in love with you every day. Happy 5-year future anniversary! \n\nLove, \nPrasanth.");
+                            setCurrentReason("Date: June 13, 2030 \n\nHey Kuttymaa, \n\nWe still laugh at the same silly things. We still annoy each other. And somehow I still fall in love with you every day. Happy 5-year future anniversary! \n\nLove, \nPrasanth.");
                             setReasonsDialogOpen(true);
                           }}
                           sx={{ bgcolor: "#ff4081", borderRadius: 20 }}
@@ -3089,10 +3089,10 @@ export default function App() {
               </Card>
             </Box>
 
-            {/* Babymaa According to People */}
+            {/* Kuttymaa According to People */}
             <Box sx={{ mb: 6 }}>
               <Typography variant="h5" color="white" fontWeight="bold" align="center" mb={3} sx={{ fontFamily: "'Outfit', sans-serif" }}>
-                🎭 Babymaa According to Different People
+                🎭 Kuttymaa According to Different People
               </Typography>
               <Grid container spacing={3} sx={{ maxWidth: 800, mx: "auto" }}>
                 {[
@@ -3274,7 +3274,7 @@ export default function App() {
                 <>
                   <TextField
                     multiline rows={3} fullWidth
-                    placeholder="Dear future Babymaa..."
+                    placeholder="Dear future Kuttymaa..."
                     value={capsuleMessage}
                     onChange={(e) => setCapsuleMessage(e.target.value)}
                     sx={{ mb: 2, bgcolor: "rgba(255,255,255,0.5)", borderRadius: 2 }}
@@ -3899,7 +3899,7 @@ export default function App() {
           <Box sx={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center", animation: "fadeInUp 3s ease" }}>
             <Box textAlign="center">
               <Typography sx={{ fontFamily: "'Pacifico',cursive", color: "#ff4081", fontSize: "3rem", mb: 6 }}>
-                Babymaa's Surprise Project
+                Kuttymaa's Surprise Project
               </Typography>
               <Typography sx={{ fontFamily: "'Outfit',sans-serif", color: "rgba(255,255,255,0.7)", fontSize: "1.2rem", mb: 2, letterSpacing: "2px" }}>
                 PRODUCED & DIRECTED BY
@@ -3912,7 +3912,7 @@ export default function App() {
                 STARRING
               </Typography>
               <Typography sx={{ fontFamily: "'Outfit',sans-serif", color: "#fff", fontSize: "1.8rem", mb: 5 }}>
-                Babymaa ❤️
+                Kuttymaa ❤️
               </Typography>
 
               <Typography sx={{ fontFamily: "'Outfit',sans-serif", color: "rgba(255,255,255,0.7)", fontSize: "1.2rem", mb: 2, letterSpacing: "2px" }}>

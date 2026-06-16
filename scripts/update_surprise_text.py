@@ -5,16 +5,16 @@ app = root / 'src' / 'App.jsx'
 html = root / 'index.html'
 text = app.read_text(encoding='utf-8')
 repls = [
-    ('Kuttymaa', 'Babymaa'),
-    ('kuttymaa', 'babymaa'),
+    ('Babymaa', 'Kuttymaa'),
+    ('babymaa', 'kuttymaa'),
     ('story: "Happy Birthday, my love. Every memory leads right back to you.",', 'story: "My love. Every memory leads right back to you.",'),
-    ("Click on any star in Kuttymaa's night sky to reveal a secret thought...", "Click on any star in Babymaa's night sky to reveal a secret thought..."),
-    ('"Happy Birthday, Kuttymaa. 🎂",', '"For Babymaa, with all my love. 💖",'),
-    ('Happy Birthday, Kuttymaa! ❤️', 'Forever yours, Babymaa! ❤️'),
-    ('if (pw === "kuttymaa" || pw === "jessy" || pw === "kutty" || pw === "k" || pw === "j") {', 'if (pw === "babymaa" || pw === "jessy" || pw === "baby" || pw === "b" || pw === "j") {'),
-    ('localStorage.setItem("kuttymaa_capsule", capsuleMessage);', 'localStorage.setItem("babymaa_capsule", capsuleMessage);'),
-    ('const saved = localStorage.getItem("kuttymaa_capsule");', 'const saved = localStorage.getItem("babymaa_capsule");'),
-    ('title: "Happy Birthday, Babymaa! 🎉",', 'title: "For Babymaa, my love! 🎉",'),
+    ("Click on any star in Babymaa's night sky to reveal a secret thought...", "Click on any star in Kuttymaa's night sky to reveal a secret thought..."),
+    ('"For Babymaa, with all my love. 💖",', '"For Kuttymaa, with all my love. 💖",'),
+    ('Forever yours, Babymaa! ❤️', 'Forever yours, Kuttymaa! ❤️'),
+    ('if (pw === "babymaa" || pw === "jessy" || pw === "baby" || pw === "b" || pw === "j") {', 'if (pw === "kuttymaa" || pw === "jessy" || pw === "kutty" || pw === "k" || pw === "j") {'),
+    ('localStorage.setItem("babymaa_capsule", capsuleMessage);', 'localStorage.setItem("kuttymaa_capsule", capsuleMessage);'),
+    ('const saved = localStorage.getItem("babymaa_capsule");', 'const saved = localStorage.getItem("kuttymaa_capsule");'),
+    ('title: "For Babymaa, my love! 🎉",', 'title: "For Kuttymaa, my love! 🎉",'),
     ('title: "Today & Forever 🎂✨",', 'title: "Today & Forever ✨",'),
     ('On your birthday, I just want you to know how grateful I am for every moment, every memory, every challenge we\'ve overcome, and every smile we\'ve shared. Thank you for trusting me, for staying by my side, and for being the beautiful person you are.', 'On this special day, I just want you to know how grateful I am for every moment, every memory, every challenge we\'ve overcome, and every smile we\'ve shared. Thank you for trusting me, for staying by my side, and for being the beautiful person you are.'),
     ('title: "Happy Birthday, My Love. ❤️🎂✨",', 'title: "Forever Yours, My Love. ❤️✨",'),
@@ -23,8 +23,8 @@ repls = [
     ('{/* Final Chapter - Birthday */}', '{/* Final Chapter - Love */}'),
     ('Birthday Time Capsule', 'Love Time Capsule'),
     ('Write a message to your future self. I\'ll keep it locked away safely until your next birthday.', 'Write a message to your future self. I\'ll keep it locked away safely until our next surprise moment.'),
-    ("Kuttymaa's Birthday Project", "Babymaa's Surprise Project"),
-    ('Kuttymaa ❤️', 'Babymaa ❤️'),
+    ("Babymaa's Surprise Project", "Kuttymaa's Birthday Project"),
+    ('Babymaa ❤️', 'Kuttymaa ❤️'),
 ]
 for old, new in repls:
     text = text.replace(old, new)
