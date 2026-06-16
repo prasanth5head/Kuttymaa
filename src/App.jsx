@@ -65,49 +65,23 @@ const DECORATORS = Array.from({ length: 25 }).map((_, i) => ({
   delay: Math.random() * 5,
 }));
 
-// Relationship start date: Apr 4, 2025
-const RELATIONSHIP_START = new Date("2025-04-04T00:00:00");
+// Relationship start date: Aug 25, 2024
+const RELATIONSHIP_START = new Date("2024-08-25T00:00:00");
 
 // Image list (update this list with any new image filenames you add in /public/image)
 const IMAGE_LIST = [
-  "/image/First Day Of Chat.jpeg",
-  "/image/Childish.jpeg",
-  "/image/Dam.jpeg",
-  "/image/kuttymaa2.jpeg",
-  "/image/kuttymaa3.jpeg",
-  "/image/kuttymaa1.jpeg",
-  "/image/first meet 1.jpeg",
-  "/image/First meet up 2 hand.jpeg",
-  "/image/first meet up 3 hand.jpeg",
-  "/image/first time saree with hot.jpeg",
-  "/image/first time saree.jpeg",
-  "/image/funny.jpeg",
-  "/image/Looking Cute.jpeg",
-  "/image/lovely.jpeg",
-  "/image/lovely2.jpeg",
-  "/image/mah girl.jpeg",
-  "/image/mah world.jpeg",
-  "/image/Mine Favt journey.jpeg",
-  "/image/mine heart.jpeg",
-  "/image/mine world.jpeg",
-  "/image/New Bacled.jpeg",
-  "/image/new braceled 2.jpeg",
-  "/image/park was first dating.jpeg",
-  "/image/perfect pose.jpeg",
-  "/image/purple 1.jpeg",
-  "/image/Rowdy Baby.jpeg",
-  "/image/saree first photo.jpeg",
-  "/image/saree.jpeg",
-  "/image/saree2.jpeg",
-  "/image/she did for me 2.jpeg",
-  "/image/she did for me 3.jpeg",
-  "/image/she did for me.jpeg",
-  "/image/she did for us .jpeg",
-  "/image/she did for us.jpeg",
-  "/image/she did for us1.jpeg",
-  "/image/simple heart.jpeg",
-  "/image/us meet day.jpeg",
-  "/image/without makeup.jpeg",
+  "/image/Meeting Pics/WhatsApp Image 2026-06-16 at 2.45.53 PM.jpeg",
+  "/image/Meeting Pics/WhatsApp Image 2026-06-16 at 2.46.08 PM.jpeg",
+  "/image/Meeting Pics/WhatsApp Image 2026-06-16 at 2.46.12 PM.jpeg",
+  "/image/Meeting Pics/WhatsApp Image 2026-06-16 at 2.46.34 PM.jpeg",
+  "/image/Meeting Pics/WhatsApp Image 2026-06-16 at 2.46.42 PM.jpeg",
+  "/image/Meeting Pics/WhatsApp Image 2026-06-16 at 2.46.48 PM.jpeg",
+  "/image/Meeting Pics/WhatsApp Image 2026-06-16 at 2.46.49 PM (1).jpeg",
+  "/image/Meeting Pics/WhatsApp Image 2026-06-16 at 2.46.49 PM.jpeg",
+  "/image/Meeting Pics/WhatsApp Image 2026-06-16 at 2.46.50 PM (1).jpeg",
+  "/image/Meeting Pics/WhatsApp Image 2026-06-16 at 2.46.50 PM.jpeg",
+  "/image/Meeting Pics/WhatsApp Image 2026-06-16 at 2.46.51 PM (1).jpeg",
+  "/image/Meeting Pics/WhatsApp Image 2026-06-16 at 2.46.51 PM.jpeg",
 ];
 
 // Sort images by numeric tokens so sequences like 1,2,3 remain together
@@ -127,49 +101,56 @@ IMAGE_LIST.sort((a, b) => {
 const VIDEOS = [
   "/moments/WhatsApp Video 2026-06-14 at 3.07.44 PM (1).mp4",
   "/moments/WhatsApp Video 2026-06-14 at 3.07.44 PM.mp4",
-  "/moments/WhatsApp Video 2026-06-14 at 3.07.45 PM (1).mp4",
-  "/moments/WhatsApp Video 2026-06-14 at 3.07.45 PM.mp4",
+  "/moments/WhatsApp Video 2026-06-16 at 11.10.11 AM.mp4",
+  "/moments/WhatsApp Video 2026-06-16 at 12.30.37 PM.mp4",
+  "/moments/WhatsApp Video 2026-06-16 at 12.30.40 PM.mp4",
+  "/moments/WhatsApp Video 2026-06-16 at 12.30.44 PM.mp4",
+  "/moments/WhatsApp Video 2026-06-16 at 2.46.43 PM.mp4",
+  "/moments/WhatsApp Video 2026-06-16 at 4.59.49 PM.mp4",
+  "/moments/WhatsApp Video 2026-06-16 at 5.07.35 PM.mp4",
+  "/moments/WhatsApp Video 2026-06-16 at 5.07.38 PM.mp4",
+  "/moments/WhatsApp Video 2026-06-16 at 5.07.41 PM.mp4",
 ];
 
 const MEMORIES = [
   {
-    img: "/image/First Day Of Chat.jpeg",
+    img: IMAGE_LIST[0],
     date: "Apr 4, 2025",
     story: "The day everything changed. One message turned into a whole new world.",
     joke: "You still pretend you weren't nervous 😏",
   },
   {
-    img: "/image/first time saree with hot.jpeg",
+    img: IMAGE_LIST[1],
     date: "March 2025",
     story: "Late nights, endless calls, and realizing this was something truly special.",
     joke: "Who fell asleep first? Not saying. 😴",
   },
   {
-    img: "/image/she did for us.jpeg",
+    img: IMAGE_LIST[2],
     date: "April 2025",
     story: "Even distance couldn't dim the warmth. Every message felt like a hug.",
     joke: "Your read receipts gave me mini heart attacks 😂",
   },
   {
-    img: "/image/purple 1.jpeg",
+    img: IMAGE_LIST[3],
     date: "May 2025",
     story: "The moment I knew — you are my favorite part of every single day.",
     joke: "You denied it. Twice. Then smiled. 🥺",
   },
   {
-    img: "/image/simple heart.jpeg",
+    img: IMAGE_LIST[4],
     date: "June 2025",
     story: "Sunshine, laughter, and you. My definition of a perfect day.",
     joke: "The selfie war was totally your fault 📸",
   },
   {
-    img: "/image/mah world.jpeg",
+    img: IMAGE_LIST[5],
     date: "Aug 2025",
     story: "We've been through storms together, and I'd choose them all again with you.",
     joke: "You win every argument. I'll admit it now. 🏳️",
   },
   {
-    img: "/image/mah girl.jpeg",
+    img: IMAGE_LIST[6],
     date: "Today ❤️",
     story: "My love. Every memory leads right back to you.",
     joke: "You're stuck with me. No refunds. 😘",
@@ -347,14 +328,14 @@ const LOVE_COUPONS = [
 ];
 
 const CALENDAR_MEMORIES = {
-  "2025-04-04": "Our first chat. The day everything changed. ❤️",
-  "2025-05-22": "You showed me how much you trust me.",
-  "2025-06-06": "We became intimate in a new way over the phone. 🔥",
-  "2025-09-05": "We met at your home and shared passionate moments. 💕",
-  "2026-01-01": "We went dating in the forest. A magical night. 🌲✨",
-  "2026-01-12": "Our talks reduced, but my love never did.",
-  "2026-02-26": "The day you left. My heart broke. 💔",
-  "2026-05-23": "You came back. We became together again. Forever. 🥺❤️"
+  "2024-08-25": "Our first chat. The day everything changed. ❤️",
+  "2025-03-28": "We went chennimalai temple and shared passionate moments. 💕",
+  "2025-12-31": "You showed me how much you trust me.",
+  "2026-02-02": "We went temple dindal. A magical Day. 🌲✨",
+  "2026-03-30": "We became intimate in a new way on theatre top corner seat. 🔥",
+  "2026-04-03": "We talk on late night shared ours pleasures each other",
+  "2026-04-29": "The day you left. My heart broke. 💔",
+  "2026-06-13": "You came back. We became together again. Forever. 🥺❤️"
 };
 
 const THOUGHTS_GENERATOR_LIST = [
@@ -1025,9 +1006,10 @@ const COUPLE_QUIZ = [
 ];
 
 const MUSIC_MEMORIES = [
-  { title: "Our first long call 📞", song: "The song we talked over", desc: "We lost track of time entirely.", src: "" },
-  { title: "The song that reminds me of you 🎶", song: "Every time it plays", desc: "It feels like you're right next to me.", src: "" },
-  { title: "When I missed you the most 🌧️", song: "Late night playlist", desc: "This got me through the long nights.", src: "" },
+  { title: "Mudhal Nee Mudivum Nee 🎼", song: "Our beginning and forever", desc: "From the moment we met, you became my everything.", src: "/Mudhal-Nee-Mudivum-Nee-Title-Track-MassTamilan.io.mp3" },
+  { title: "Kadhaippoma 💕", song: "The love story we're living", desc: "Every note speaks of you and me.", src: "/Kadhaippoma-MassTamilan.io.mp3" },
+  { title: "Maru Varthai Pesathey 🌙", song: "Words of love and longing", desc: "This melody carries all the things I want to tell you.", src: "/Maru-Varthai-Pesathey-MassTamilan.com.mp3" },
+  { title: "Thalli Pogathey 🌺", song: "A song for your smile", desc: "Your presence turns every moment into music.", src: "/Thalli-Pogathey.mp3" },
 ];
 
 const FUNNY_AWARDS = [
@@ -1373,31 +1355,24 @@ function HeartRainBackground() {
 
 function MemoryLane() {
   const [index, setIndex] = useState(null);
-  const [topics, setTopics] = useState({});
-  const [editing, setEditing] = useState(null);
   const [openFolder, setOpenFolder] = useState(null);
+
+  const defaultMemoryTopics = [
+    'The incrediables year for us',
+    'mild dropout little but have memories',
+    'our hard days begins',
+    'beginning of lovely days',
+    'the best days ever in our lovely life',
+    'our live moments',
+    'mine fav in your gallery'
+  ];
 
   useEffect(() => {
     fetch('/image_index.json')
       .then((r) => r.json())
       .then((j) => setIndex(j))
       .catch(() => setIndex({}));
-    // load topics from localStorage
-    const saved = {};
-    try {
-      Object.keys(localStorage).forEach((k) => {
-        if (k.startsWith('memory_topic_')) saved[k.replace('memory_topic_', '')] = localStorage.getItem(k);
-      });
-    } catch (e) {}
-    setTopics(saved);
   }, []);
-
-  const saveTopic = (folder, value) => {
-    const key = `memory_topic_${folder}`;
-    localStorage.setItem(key, value);
-    setTopics((t) => ({ ...t, [folder]: value }));
-    setEditing(null);
-  };
 
   if (!index) return (
     <Box sx={{ textAlign: 'center', color: 'white', py: 4 }}>Loading Memory Lane…</Box>
@@ -1409,23 +1384,12 @@ function MemoryLane() {
         🗂️ Memory Lane (Images)
       </Typography>
       <Grid container spacing={3} sx={{ maxWidth: 1100, mx: 'auto' }}>
-        {Object.entries(index).map(([folder, files]) => (
+        {Object.entries(index).map(([folder, files], folderIndex) => (
           <Grid item xs={12} sm={6} md={4} key={folder}>
             <Card sx={{ p: 2, borderRadius: 3, background: 'rgba(255,255,255,0.06)', minHeight: 190 }}>
-              <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1 }}>
-                <Typography fontWeight="bold" sx={{ color: '#ffd54f' }}>{folder}</Typography>
-                <Box>
-                  {editing === folder ? (
-                    <>
-                      <TextField size="small" defaultValue={topics[folder] || ''} onBlur={(e) => saveTopic(folder, e.target.value)} autoFocus />
-                    </>
-                  ) : (
-                    <Button size="small" onClick={() => setEditing(folder)} sx={{ bgcolor: '#ff4081', color: '#fff' }}>Add/Change Topic</Button>
-                  )}
-                </Box>
-              </Box>
+              <Typography fontWeight="bold" sx={{ color: '#ffd54f', mb: 1 }}>{folder}</Typography>
               <Typography variant="subtitle1" align="center" sx={{ color: '#ff4081', display: 'block', mb: 1.5, fontWeight: 'bold', fontStyle: 'italic', letterSpacing: 0.5, textShadow: '0 2px 4px rgba(255, 64, 129, 0.2)' }}>
-                {topics[folder] ? `✨ Topic: ${topics[folder]} ✨` : 'No topic set — click to add.'}
+                {defaultMemoryTopics[folderIndex] || 'No topic available'}
               </Typography>
 
               <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
@@ -1497,6 +1461,7 @@ export default function App() {
   const videoRef = useRef(null);
   const letterAudioRef = useRef(null);
   const surpriseAudioRef = useRef(null);
+  const musicMemory3AudioRef = useRef(null);
 
   // Vault unlock handler
   const handleUnlockVault = () => {
@@ -1623,8 +1588,9 @@ export default function App() {
 
   const getMemoryAudioRef = (idx) => {
     if (idx === 0) return letterAudioRef;
-    if (idx === 1) return audioRef;
-    if (idx === 2) return surpriseAudioRef;
+    if (idx === 1) return surpriseAudioRef;
+    if (idx === 2) return voiceNoteAudioRef;
+    if (idx === 3) return musicMemory3AudioRef;
     return null;
   };
 
@@ -1665,6 +1631,10 @@ export default function App() {
       setPlayingMemoryIdx(idx);
       const currentRef = getMemoryAudioRef(idx);
       if (currentRef && currentRef.current) {
+        // Set the audio source dynamically
+        if (MUSIC_MEMORIES[idx] && MUSIC_MEMORIES[idx].src) {
+          currentRef.current.src = MUSIC_MEMORIES[idx].src;
+        }
         currentRef.current.currentTime = 0;
         currentRef.current.play().catch(console.log);
       }
@@ -2515,9 +2485,84 @@ export default function App() {
                   </Grid>
                 </Box>
               </Grid>
-            </Grid>
-          </Box>
-        )}
+             {/* A Message From Me to You */}
+             <Grid item xs={12}>
+               <Card sx={{ 
+                 p: 0, 
+                 borderRadius: 6, 
+                 background: "rgba(255,255,255,0.95)", 
+                 border: "2px solid #ff4081",
+                 overflow: "hidden",
+                 boxShadow: "0 15px 40px rgba(255,64,129,0.2)"
+               }}>
+                 <Box sx={{
+                   display: "flex",
+                   flexDirection: { xs: "column", md: "row" },
+                   alignItems: "stretch"
+                 }}>
+                   {/* Image Section */}
+                   <Box sx={{
+                     width: { xs: "100%", md: "50%" },
+                     maxHeight: 400,
+                     overflow: "hidden",
+                     display: "flex",
+                     alignItems: "center",
+                     justifyContent: "center"
+                   }}>
+                     <Box
+                       component="img"
+                       src="/image/Meeting Pics/WhatsApp Image 2026-06-16 at 2.45.59 PM.jpeg"
+                       alt="A Message From Me to You"
+                       sx={{
+                         width: "100%",
+                         height: "100%",
+                         objectFit: "cover",
+                         transition: "all 0.3s ease",
+                         "&:hover": {
+                           transform: "scale(1.05)"
+                         }
+                       }}
+                     />
+                   </Box>
+                   
+                   {/* Message Section */}
+                   <Box sx={{
+                     width: { xs: "100%", md: "50%" },
+                     p: 4,
+                     display: "flex",
+                     flexDirection: "column",
+                     justifyContent: "center",
+                     gap: 2
+                   }}>
+                     <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+                       <LocalMoviesIcon sx={{ color: "#ff4081", fontSize: 32 }} />
+                       <Typography variant="h4" fontWeight="bold" sx={{ fontFamily: "'Outfit', sans-serif", color: "#d81b60" }}>
+                         A Message From Me to You
+                       </Typography>
+                     </Box>
+                     <Typography variant="body1" sx={{ color: "#374151", lineHeight: 1.8, fontFamily: "'Outfit', sans-serif" }}>
+                       There are moments in life that change everything. This is one of those for me. Every smile, every laugh, every silly conversation with you has become the most precious part of my existence. I don't just love you — I'm grateful for you, inspired by you, and completely devoted to you. Thank you for being the most beautiful chapter of my life. 🎬❤️
+                     </Typography>
+                     <Box sx={{ 
+                       p: 2.5, 
+                       bgcolor: "rgba(255,64,129,0.08)", 
+                       borderRadius: 3,
+                       borderLeft: "4px solid #ff4081"
+                     }}>
+                       <Typography variant="subtitle2" sx={{ color: "#d81b60", fontWeight: "bold", fontFamily: "'Outfit', sans-serif" }}>
+                         💕 Forever yours,
+                       </Typography>
+                       <Typography variant="body2" sx={{ color: "#c2185b", fontFamily: "'Pacifico', cursive", fontSize: "1.3rem", mt: 1 }}>
+                         Your Aham
+                       </Typography>
+                     </Box>
+                   </Box>
+                 </Box>
+               </Card>
+             </Grid>
+             </Grid>
+           </Box>
+         )}
 
         {/* Memories Tab Panel */}
         {activeTab === "memories" && (
@@ -2558,9 +2603,10 @@ export default function App() {
                       
                       <Box sx={{ bgcolor: "rgba(233,30,99,0.05)", p: 1.5, borderRadius: 2, mb: 2, width: "100%" }}>
                         <Typography variant="caption" sx={{ fontStyle: "italic", color: "#8e24aa" }}>
-                          {i === 0 && "Why it counts: Because that night, I realized your voice was my favorite melody. ❤️"}
-                          {i === 1 && "Why it counts: Every lyric feels like it was written directly about your smile. 🎶"}
-                          {i === 2 && "Why it counts: On long lonely nights, this was the bridge that connected my thoughts to you. 🌧️"}
+                          {i === 0 && "Why it counts: Our beginning was written in this melody. Forever starts here. 🎼"}
+                          {i === 1 && "Why it counts: This song is our love story in musical form. 💕"}
+                          {i === 2 && "Why it counts: Every word speaks what my heart cannot put into words. 🌙"}
+                          {i === 3 && "Why it counts: Your smile is the music that makes my heart dance. 🌺"}
                         </Typography>
                       </Box>
 
@@ -2893,10 +2939,12 @@ export default function App() {
                     <Typography variant="h3" align="center" sx={{ fontFamily: "'Pacifico', cursive", color: "#d81b60", mb: 4 }}>
                       My Dearest Kuttymaa,
                     </Typography>
+                    <Box sx={{ mb: 4, display: 'flex', justifyContent: 'center' }}>
+                      <Box component="img" src="/letter/surpraise.jpeg" alt="Open Letter" sx={{ width: '100%', maxWidth: 520, borderRadius: 4, boxShadow: '0 20px 50px rgba(0,0,0,0.15)' }} />
+                    </Box>
                     <Typography variant="body1" sx={{ fontFamily: "'Outfit', sans-serif", color: "#374151", lineHeight: 2.0, fontSize: "1.1rem", mb: 4 }}>
                       Words often fail me when I try to write down what you mean to me. You came into my life like a quiet breeze, and before I knew it, you became my entire atmosphere. Every laugh we share, every late-night call where we lose track of time, and even the moments when distance makes things hard, only serves to show me how special what we have is. <br/><br/>
                       You have a way of lighting up my darkest days with just a single text. I love your innocence, your gentle soul, and the fierce loyalty you carry. I want to promise you that no matter what storms come, I am holding your hand. I believe in you, in your dreams, and in us. Thank you for choosing me every single day. Always yours, my love. ❤️
-                      
                     </Typography>
                     <Typography align="right" sx={{ fontFamily: "'Caveat', cursive", fontSize: "2rem", color: "#ff4081", fontWeight: "bold" }}>
                       Yours Forever, Prasanth.
@@ -3393,7 +3441,7 @@ export default function App() {
             <Card sx={{ bgcolor: "white", borderRadius: 2, overflow: "visible", border: "1px solid rgba(0, 0, 0, 0.05)", boxShadow: "0 15px 35px rgba(0, 0, 0, 0.15)" }}>
               {/* Full photo display with no cropping */}
               <Box sx={{ display: "flex", justifyContent: "center", bgcolor: "#f5f5f5" }}>
-                <img src="/image/she did for us .jpeg" alt="A Message From Me to You" style={{ width: "100%", height: "auto", objectFit: "contain", display: "block" }} />
+                <img src="\image\Meeting Pics\WhatsApp Image 2026-06-16 at 2.45.59 PM.jpeg" alt="A Message From Me to You" style={{ width: "100%", height: "auto", objectFit: "contain", display: "block" }} />
               </Box>
               
               {/* Bottom label */}
@@ -4112,6 +4160,23 @@ export default function App() {
           </Typography>
         </Box>
       )}
+
+      {/* Audio Elements */}
+      <audio ref={audioRef} loop volume={0.3}>
+        <source src="/MINE KUTTYMAA SONGS.mp3" type="audio/mpeg" />
+      </audio>
+      <audio ref={letterAudioRef}>
+        <source src="/MINE KUTTYMAA SONGS.mp3" type="audio/mpeg" />
+      </audio>
+      <audio ref={surpriseAudioRef}>
+        <source src="/MINE KUTTYMAA SONGS.mp3" type="audio/mpeg" />
+      </audio>
+      <audio ref={voiceNoteAudioRef}>
+        <source src="/MINE KUTTYMAA SONGS.mp3" type="audio/mpeg" />
+      </audio>
+      <audio ref={musicMemory3AudioRef}>
+        <source src="/MINE KUTTYMAA SONGS.mp3" type="audio/mpeg" />
+      </audio>
 
       {/* Embedded Custom CSS Styles */}
       <style>
