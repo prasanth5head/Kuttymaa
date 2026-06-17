@@ -2995,8 +2995,9 @@ export default function App() {
                     <Typography variant="h3" align="center" sx={{ fontFamily: "'Pacifico', cursive", color: "#d81b60", mb: 4 }}>
                       My Dearest Kuttymaa,
                     </Typography>
-                    <Box sx={{ mb: 4, display: 'flex', justifyContent: 'center' }}>
+                    <Box sx={{ mb: 4, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2 }}>
                       <Box component="img" src="/letter/surpraise.jpeg" alt="Open Letter" sx={{ width: '100%', maxWidth: 520, borderRadius: 4, boxShadow: '0 20px 50px rgba(0,0,0,0.15)' }} />
+                      <Box component="img" src="/letter/Poem For You.jpeg" alt="Poem For You" sx={{ width: '100%', maxWidth: 520, borderRadius: 4, boxShadow: '0 20px 50px rgba(0,0,0,0.15)' }} />
                     </Box>
                     <Typography variant="body1" sx={{ fontFamily: "'Outfit', sans-serif", color: "#374151", lineHeight: 2.0, fontSize: "1.1rem", mb: 4 }}>
                       Words often fail me when I try to write down what you mean to me. You came into my life like a quiet breeze, and before I knew it, you became my entire atmosphere. Every laugh we share, every late-night call where we lose track of time, and even the moments when distance makes things hard, only serves to show me how special what we have is. <br/><br/>
