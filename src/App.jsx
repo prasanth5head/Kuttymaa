@@ -1040,7 +1040,7 @@ const COUPLE_QUIZ = [
   { q: "What's a topic I could talk about for hours with you?", options: ["Food", "Travel", "Dreams", "Music"], a: "Dreams", feedback: "I love dreaming about everything with you. ✨" },
   { q: "What small surprise brightens my day most?", options: ["A coffee", "A text message", "A random hug", "A song dedication"], a: "A text message", feedback: "A sweet message from you makes my day. 💌" },
   { q: "Which season do I like to spend with you the most?", options: ["Spring", "Summer", "Monsoon", "Winter"], a: "Monsoon", feedback: "Monsoon coziness with you is unmatched. ☔" },
-  { q: "What's one food I always ask you to share?", options: ["Pizza", "Dessert", "Fries", "Biryani"], a: "Dessert", feedback: "We always save room for dessert together. 🍰" },
+  { q: "What's one food I always ask you to shaWhy it counts: Your smile is the music that makes my heart dance. 🌺re?", options: ["Pizza", "Dessert", "Fries", "Biryani"], a: "Dessert", feedback: "We always save room for dessert together. 🍰" },
   { q: "What's a quirky thing we both laugh about?", options: ["Our inside jokes", "Our matching faces", "Our dance moves", "Our sleepy talks"], a: "Our inside jokes", feedback: "Inside jokes are our private little world. 🤭" },
   { q: "Which word describes our relationship best?", options: ["Comfort", "Adventure", "Mystery", "Routine"], a: "Comfort", feedback: "Comfort — being with you feels like home. 🏡" },
   { q: "How do I show love most often?", options: ["Words", "Actions", "Gifts", "Time"], a: "Actions", feedback: "I show love by doing things for you every day. ❤️" },
@@ -1053,6 +1053,7 @@ const MUSIC_MEMORIES = [
   { title: "Kadhaippoma 💕", song: "The love story we're living", desc: "Every note speaks of you and me.", src: "/Kadhaippoma-MassTamilan.io.mp3" },
   { title: "Maru Varthai Pesathey 🌙", song: "Words of love and longing", desc: "This melody carries all the things I want to tell you.", src: "/Maru-Varthai-Pesathey-MassTamilan.com.mp3" },
   { title: "Thalli Pogathey 🌺", song: "A song for your smile", desc: "Your presence turns every moment into music.", src: "/Thalli-Pogathey.mp3" },
+  { title: "Enna Nenatche ✨", song: "What you mean to me", desc: "My heart finds its home in you.", src: "/Enna Nenatche.mp3" },
 ];
 
 const FUNNY_AWARDS = [
@@ -1507,6 +1508,7 @@ export default function App() {
   const letterAudioRef = useRef(null);
   const surpriseAudioRef = useRef(null);
   const musicMemory3AudioRef = useRef(null);
+  const musicMemory4AudioRef = useRef(null);
 
   // Vault unlock handler
   const handleUnlockVault = () => {
@@ -1649,6 +1651,7 @@ export default function App() {
     if (idx === 1) return surpriseAudioRef;
     if (idx === 2) return voiceNoteAudioRef;
     if (idx === 3) return musicMemory3AudioRef;
+    if (idx === 4) return musicMemory4AudioRef;
     return null;
   };
 
@@ -2695,6 +2698,7 @@ export default function App() {
                           {i === 1 && "Why it counts: This song is our love story in musical form. 💕"}
                           {i === 2 && "Why it counts: Every word speaks what my heart cannot put into words. 🌙"}
                           {i === 3 && "Why it counts: Your smile is the music that makes my heart dance. 🌺"}
+                          {i === 4 && "Why it counts: This song captures the essence of our love. 🎵"}
                         </Typography>
                       </Box>
 
@@ -4329,6 +4333,9 @@ export default function App() {
       </audio>
       <audio ref={musicMemory3AudioRef}>
         <source src="/MINE KUTTYMAA SONGS.mp3" type="audio/mpeg" />
+      </audio>
+      <audio ref={musicMemory4AudioRef}>
+        <source src="/Enna Nenatche.mp3" type="audio/mpeg" />
       </audio>
 
       {/* Embedded Custom CSS Styles */}
