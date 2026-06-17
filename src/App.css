@@ -182,3 +182,91 @@
     border-right-color: var(--border);
   }
 }
+
+:root {
+  --glass-bg: rgba(255, 255, 255, 0.18);
+  --glass-border: rgba(255, 255, 255, 0.45);
+  --glass-shadow: 0 30px 80px rgba(0, 0, 0, 0.14);
+}
+
+body {
+  background: radial-gradient(circle at top, rgba(255, 218, 236, 0.22), transparent 28%),
+              linear-gradient(135deg, #ffdfdf 0%, #ffe9f7 35%, #f7e6ff 70%, #fff9fb 100%);
+  color: #2c2c2c;
+}
+
+.MuiPaper-root {
+  background: var(--glass-bg) !important;
+  border: 1px solid var(--glass-border) !important;
+  box-shadow: var(--glass-shadow) !important;
+  -webkit-backdrop-filter: blur(18px) !important;
+  backdrop-filter: blur(18px) !important;
+}
+
+.MuiButton-root {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+}
+
+.MuiButton-root:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 35px rgba(255, 64, 129, 0.18);
+}
+
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes pulseText {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  25%, 75% { transform: scale(1.05); }
+  50% { transform: scale(1.08); }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-16px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes pulseHeart {
+  0%, 100% { transform: scale(1); }
+  40% { transform: scale(1.08); }
+  60% { transform: scale(0.98); }
+}
+
+@keyframes subtleGlow {
+  0%, 100% { box-shadow: 0 18px 55px rgba(255, 64, 129, 0.12); }
+  50% { box-shadow: 0 22px 70px rgba(255, 64, 129, 0.18); }
+}
+
+  &::before {
+    left: 0;
+    border-left-color: var(--border);
+  }
+  &::after {
+    right: 0;
+    border-right-color: var(--border);
+  }
+}

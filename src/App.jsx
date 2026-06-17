@@ -42,6 +42,29 @@ import LibraryMusicIcon from "@mui/icons-material/LibraryMusic";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import LocalMoviesIcon from "@mui/icons-material/LocalMovies";
 import VideocamIcon from "@mui/icons-material/Videocam";
+import RomanticExtras from "./components/RomanticExtras";
+import SafePlace from "./components/SafePlace";
+import ThingsYouChanged from "./components/ThingsYouChanged";
+import ThroughMyEyes from "./components/ThroughMyEyes";
+import ReasonsLucky from "./components/ReasonsLucky";
+import HugSimulator from "./components/HugSimulator";
+import AlternateEndings from "./components/AlternateEndings";
+import LastBeforeSleep from "./components/LastBeforeSleep";
+import FinalSecretPage from "./components/FinalSecretPage";
+import { motion, AnimatePresence } from "framer-motion";
+
+const MotionBox = motion(Box);
+const MotionCard = motion(Card);
+const SECTION_MOTION = {
+  hidden: { opacity: 0, y: 35 },
+  visible: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: -20 },
+};
+const SECTION_TRANSITION = { duration: 0.45, ease: "easeOut" };
+const CARD_HOVER = {
+  whileHover: { y: -8, boxShadow: "0 24px 50px rgba(255, 64, 129, 0.18)" },
+  whileTap: { scale: 0.99 },
+};
 
 const CONFETTI_COLORS = ["#ff4081", "#ff80ab", "#ffd54f", "#4fc3f7", "#81c784", "#ba68c8"];
 const CONFETTI_PIECES = Array.from({ length: 100 }).map((_, i) => ({
@@ -1000,9 +1023,29 @@ function TypewriterFinalSequence({ onClose }) {
 }
 
 const COUPLE_QUIZ = [
-  { q: "What's my absolute favorite thing about you?", options: ["Your looks", "Your kindness", "Your cooking", "Your jokes"], a: "Your kindness", feedback: "Correct ❤️ Your gentle soul is my favorite." },
-  { q: "Who fell in love first?", options: ["Me", "You", "We fell at the exact same time", "Still deciding"], a: "Me", feedback: "Guilty. I fell first, and I fell hard. ❤️" },
-  { q: "What's my dream date with you?", options: ["Fancy dinner", "Movie night", "Late night drive", "Cozy at home with food"], a: "Cozy at home with food", feedback: "Yes! Nothing beats being lazy together with good food. 🍕❤️" },
+  { q: "Where did we first start talking or meet?", options: ["At a party", "Online/chat", "Through friends", "At work"], a: "Online/chat", feedback: "Right — our story started with that first message. ❤️" },
+  { q: "What's one thing I always compliment you about?", options: ["Your smile", "Your laughter", "Your kindness", "Your style"], a: "Your smile", feedback: "Yes — your smile lights up everything. 😊" },
+  { q: "Which snack do I secretly love when we're together?", options: ["Chips", "Ice cream", "Samosa", "Chocolate"], a: "Ice cream", feedback: "Correct — sweet moments and sweet treats. 🍨" },
+  { q: "What time of day do I prefer to text you 'good morning'?", options: ["Early morning", "Late morning", "Noon", "Evening"], a: "Early morning", feedback: "Of course — I love starting the day thinking of you. 🌅" },
+  { q: "Which movie genre do we enjoy most together?", options: ["Romcom", "Action", "Horror", "Documentary"], a: "Romcom", feedback: "Romcoms are our cozy go-to. 🎬💕" },
+  { q: "What's a small habit of yours that I find adorable?", options: ["Your frown", "Your humming", "Your shoes by the door", "Your snacks stash"], a: "Your humming", feedback: "Yes — I love when you hum quietly. 🎶" },
+  { q: "What's my favorite way to spend a weekend with you?", options: ["Explore a new place", "Stay in and cook", "Meet friends", "Binge a show"], a: "Stay in and cook", feedback: "Home, food, and you — perfect weekend. 🍳❤️" },
+  { q: "Which song reminds me of you?", options: ["A love ballad", "A slow instrumental", "A happy pop song", "An old classic"], a: "A love ballad", feedback: "Every love ballad feels like it was written for us. 🎼" },
+  { q: "What pet name do I often use for you?", options: ["Babe", "Love", "Cutie", "Shorty"], a: "Love", feedback: "Yes — 'Love' is simple and true. 💕" },
+  { q: "What's a place I'd love to visit with you someday?", options: ["Beach getaway", "Hill station", "Foreign city", "Spiritual retreat"], a: "Beach getaway", feedback: "Sun, sand, and you — dream trip. 🏖️" },
+  { q: "Which of these gifts would make me happiest?", options: ["Jewelry", "A handwritten letter", "A surprise trip", "Clothes"], a: "A handwritten letter", feedback: "Words from the heart mean everything. ✍️❤️" },
+  { q: "How do I prefer to resolve a small argument?", options: ["Talk it out", "Give space", "Make a joke", "Buy a gift"], a: "Talk it out", feedback: "Talking is how we find each other again. 🗣️" },
+  { q: "What's my favorite thing to do on your birthday?", options: ["Throw a party", "Make a surprise", "Take you out", "Cook for you"], a: "Make a surprise", feedback: "I love making your day special. 🎉" },
+  { q: "Which pet peeve of yours do I secretly find cute?", options: ["Being stubborn", "Being clumsy", "Being late", "Being picky"], a: "Being stubborn", feedback: "Even stubbornness is adorable on you. 😄" },
+  { q: "What's a topic I could talk about for hours with you?", options: ["Food", "Travel", "Dreams", "Music"], a: "Dreams", feedback: "I love dreaming about everything with you. ✨" },
+  { q: "What small surprise brightens my day most?", options: ["A coffee", "A text message", "A random hug", "A song dedication"], a: "A text message", feedback: "A sweet message from you makes my day. 💌" },
+  { q: "Which season do I like to spend with you the most?", options: ["Spring", "Summer", "Monsoon", "Winter"], a: "Monsoon", feedback: "Monsoon coziness with you is unmatched. ☔" },
+  { q: "What's one food I always ask you to share?", options: ["Pizza", "Dessert", "Fries", "Biryani"], a: "Dessert", feedback: "We always save room for dessert together. 🍰" },
+  { q: "What's a quirky thing we both laugh about?", options: ["Our inside jokes", "Our matching faces", "Our dance moves", "Our sleepy talks"], a: "Our inside jokes", feedback: "Inside jokes are our private little world. 🤭" },
+  { q: "Which word describes our relationship best?", options: ["Comfort", "Adventure", "Mystery", "Routine"], a: "Comfort", feedback: "Comfort — being with you feels like home. 🏡" },
+  { q: "How do I show love most often?", options: ["Words", "Actions", "Gifts", "Time"], a: "Actions", feedback: "I show love by doing things for you every day. ❤️" },
+  { q: "Which day do I consider ours to begin?", options: ["The first chat", "Our first date", "When we said 'I love you'", "When we met in person"], a: "The first chat", feedback: "That first chat changed everything. 💬❤️" },
+  { q: "What's my favorite way to say sorry when needed?", options: ["Hug", "Write a note", "Cook", "Surprise"], a: "Hug", feedback: "A hug says more than words. 🤗" },
 ];
 
 const MUSIC_MEMORIES = [
@@ -1508,6 +1551,9 @@ export default function App() {
   const [quizScore, setQuizScore] = useState(0);
   const [quizFeedback, setQuizFeedback] = useState("");
   const [quizFinished, setQuizFinished] = useState(false);
+
+  // Scale raw correct answers (out of COUPLE_QUIZ.length) to a 25-point score
+  const scaledQuizScore = Math.round((quizScore / (COUPLE_QUIZ.length || 1)) * 25);
 
   const handleQuizAnswer = (answer) => {
     const isCorrect = answer === COUPLE_QUIZ[quizStep].a;
@@ -2238,7 +2284,16 @@ export default function App() {
             { id: "journey", label: "✨ Our Journey" },
             { id: "arcade", label: "🕹️ Arcade Hub" },
             { id: "cosmos", label: "🌌 Sky & Map" },
-            { id: "future", label: "🌸 Future Trail" }
+            { id: "future", label: "🌸 Future Trail" },
+            { id: "extras", label: "✨ Extras" },
+            { id: "safeplace", label: "🤍 Safe Place" },
+            { id: "changed", label: "🌹 Things Changed" },
+            { id: "througheyes", label: "✨ Through My Eyes" },
+            { id: "lucky", label: "🫂 Lucky" },
+            { id: "hug", label: "🤗 Hug Me" },
+            { id: "endings", label: "📖 Endings" },
+            { id: "sleep", label: "🌙 Sleep" },
+            { id: "secret", label: "❤️ Secret" }
           ].map((tab) => (
             <Button
               key={tab.id}
@@ -2269,8 +2324,9 @@ export default function App() {
         </Box>
 
         {/* Home Tab Panel */}
-        {activeTab === "home" && (
-          <Box sx={{ animation: "fadeInUp 0.6s ease", mt: 2 }}>
+        <AnimatePresence mode="wait">
+          {activeTab === "home" && (
+            <MotionBox key="home" variants={SECTION_MOTION} initial="hidden" animate="visible" exit="exit" transition={SECTION_TRANSITION} sx={{ mt: 2 }}>
             <Grid container spacing={4}>
               <Grid item xs={12} md={6}>
                 <Card sx={{ p: 4, borderRadius: 6, background: "rgba(255,255,255,0.9)", border: "2px solid rgba(255,64,129,0.15)", textAlign: "center", height: "100%", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
@@ -2561,12 +2617,12 @@ export default function App() {
                </Card>
              </Grid>
              </Grid>
-           </Box>
-         )}
+          </MotionBox>
+        )}
 
         {/* Memories Tab Panel */}
         {activeTab === "memories" && (
-          <Box sx={{ animation: "fadeInUp 0.6s ease", mt: 2 }}>
+          <MotionBox key="memories" variants={SECTION_MOTION} initial="hidden" animate="visible" exit="exit" transition={SECTION_TRANSITION} sx={{ mt: 2 }}>
             {/* Netflix Carousel removed per request */}
 
             {/* Polaroid Memory Grid */}
@@ -2719,12 +2775,12 @@ export default function App() {
                 </Button>
               </Card>
             </Box>
-          </Box>
+          </MotionBox>
         )}
 
         {/* Love Vault Tab Panel */}
         {activeTab === "vault" && (
-          <Box sx={{ animation: "fadeInUp 0.6s ease", mt: 2 }}>
+          <MotionBox key="vault" variants={SECTION_MOTION} initial="hidden" animate="visible" exit="exit" transition={SECTION_TRANSITION} sx={{ mt: 2 }}>
             <Grid container spacing={4} sx={{ mb: 6 }}>
               {/* Vault check card */}
               <Grid item xs={12} md={6}>
@@ -2953,12 +3009,12 @@ export default function App() {
                 )}
               </Card>
             </Box>
-          </Box>
+          </MotionBox>
         )}
 
         {/* Our Beautiful Journey Tab Panel */}
         {activeTab === "journey" && (
-          <Box sx={{ animation: "fadeInUp 0.6s ease", mt: 2, maxWidth: 800, mx: "auto" }}>
+          <MotionBox key="journey" variants={SECTION_MOTION} initial="hidden" animate="visible" exit="exit" transition={SECTION_TRANSITION} sx={{ mt: 2, maxWidth: 800, mx: "auto" }}>
             {/* Journey Header */}
             <Box sx={{ textAlign: "center", mb: 6 }}>
               <Typography variant="h3" sx={{ fontFamily: "'Pacifico', cursive", color: "#ff4081", mb: 2, textShadow: "0 4px 20px rgba(255,64,129,0.3)" }}>
@@ -3054,12 +3110,12 @@ export default function App() {
                 </Typography>
               </Card>
             </Box>
-          </Box>
+          </MotionBox>
         )}
 
         {/* Arcade Hub Tab Panel */}
         {activeTab === "arcade" && (
-          <Box sx={{ animation: "fadeInUp 0.6s ease", mt: 2 }}>
+          <MotionBox key="arcade" variants={SECTION_MOTION} initial="hidden" animate="visible" exit="exit" transition={SECTION_TRANSITION} sx={{ mt: 2 }}>
             <Grid container spacing={4}>
               <Grid item xs={12} md={6}>
                 <Card sx={{ p: 3, borderRadius: 5, background: "rgba(255,255,255,0.92)", border: "1.5px solid rgba(255,255,255,0.6)", height: "100%" }}>
@@ -3111,7 +3167,7 @@ export default function App() {
                       <EmojiEventsIcon sx={{ fontSize: 60, color: "#ffd54f", mb: 2 }} />
                       <Typography variant="h4" sx={{ fontFamily: "'Pacifico',cursive", color: "#d81b60", mb: 2 }}>Quiz Complete!</Typography>
                       <Typography sx={{ fontSize: "1.2rem", color: "#4a4a4a" }}>
-                        You scored {quizScore} out of {COUPLE_QUIZ.length}. Regardless of the score, you win my heart every day. ❤️
+                        You scored {scaledQuizScore} / 25 ({quizScore} of {COUPLE_QUIZ.length} correct). Regardless of the score, you win my heart every day. ❤️
                       </Typography>
                       <Button variant="contained" onClick={() => { setQuizStep(0); setQuizScore(0); setQuizFinished(false); }} sx={{ mt: 3, bgcolor: "#ff4081", borderRadius: 20 }}>Retry Quiz</Button>
                     </Box>
@@ -3119,12 +3175,12 @@ export default function App() {
                 </Card>
               </Grid>
             </Grid>
-          </Box>
+          </MotionBox>
         )}
 
         {/* Cosmos Tab Panel */}
         {activeTab === "cosmos" && (
-          <Box sx={{ animation: "fadeInUp 0.6s ease", mt: 2 }}>
+          <MotionBox key="cosmos" variants={SECTION_MOTION} initial="hidden" animate="visible" exit="exit" transition={SECTION_TRANSITION} sx={{ mt: 2 }}>
             <Grid container spacing={4}>
               <Grid item xs={12} md={6}>
                 <Card sx={{ p: 3, borderRadius: 5, bgcolor: "#050014", border: "1.5px solid rgba(255,255,255,0.15)", height: "100%", position: "relative" }}>
@@ -3143,12 +3199,12 @@ export default function App() {
                 </Card>
               </Grid>
             </Grid>
-          </Box>
+          </MotionBox>
         )}
 
         {/* Future Tab Panel */}
         {activeTab === "future" && (
-          <Box sx={{ animation: "fadeInUp 0.6s ease", mt: 2 }}>
+          <MotionBox key="future" variants={SECTION_MOTION} initial="hidden" animate="visible" exit="exit" transition={SECTION_TRANSITION} sx={{ mt: 2 }}>
             {/* Timeline */}
             <Box sx={{ mb: 6 }}>
               <Typography variant="h5" color="white" fontWeight="bold" align="center" mb={2} sx={{ fontFamily: "'Outfit', sans-serif" }}>
@@ -3295,8 +3351,72 @@ export default function App() {
                 </Dialog>
               )}
             </Box>
-          </Box>
+          </MotionBox>
         )}
+
+        {/* Extras Tab Panel */}
+        {activeTab === "extras" && (
+          <MotionBox key="extras" variants={SECTION_MOTION} initial="hidden" animate="visible" exit="exit" transition={SECTION_TRANSITION} sx={{ mt: 2 }}>
+            <RomanticExtras />
+          </MotionBox>
+        )}
+
+          {/* 🤍 Safe Place Tab */}
+          {activeTab === "safeplace" && (
+            <MotionBox key="safeplace" variants={SECTION_MOTION} initial="hidden" animate="visible" exit="exit" transition={SECTION_TRANSITION} sx={{ mt: 2 }}>
+              <SafePlace />
+            </MotionBox>
+          )}
+
+          {/* 🌹 Things You Changed Tab */}
+          {activeTab === "changed" && (
+            <MotionBox key="changed" variants={SECTION_MOTION} initial="hidden" animate="visible" exit="exit" transition={SECTION_TRANSITION} sx={{ mt: 2 }}>
+              <ThingsYouChanged />
+            </MotionBox>
+          )}
+
+          {/* ✨ Through My Eyes Tab */}
+          {activeTab === "througheyes" && (
+            <MotionBox key="througheyes" variants={SECTION_MOTION} initial="hidden" animate="visible" exit="exit" transition={SECTION_TRANSITION} sx={{ mt: 2 }}>
+              <ThroughMyEyes />
+            </MotionBox>
+          )}
+
+          {/* 🫂 Reasons I Feel Lucky Tab */}
+          {activeTab === "lucky" && (
+            <MotionBox key="lucky" variants={SECTION_MOTION} initial="hidden" animate="visible" exit="exit" transition={SECTION_TRANSITION} sx={{ mt: 2 }}>
+              <ReasonsLucky />
+            </MotionBox>
+          )}
+
+          {/* 🤗 Hug Simulator Tab */}
+          {activeTab === "hug" && (
+            <MotionBox key="hug" variants={SECTION_MOTION} initial="hidden" animate="visible" exit="exit" transition={SECTION_TRANSITION} sx={{ mt: 2 }}>
+              <HugSimulator />
+            </MotionBox>
+          )}
+
+          {/* 📖 Alternate Endings Tab */}
+          {activeTab === "endings" && (
+            <MotionBox key="endings" variants={SECTION_MOTION} initial="hidden" animate="visible" exit="exit" transition={SECTION_TRANSITION} sx={{ mt: 2 }}>
+              <AlternateEndings />
+            </MotionBox>
+          )}
+
+          {/* 🌙 Last Thing Before Sleep Tab */}
+          {activeTab === "sleep" && (
+            <MotionBox key="sleep" variants={SECTION_MOTION} initial="hidden" animate="visible" exit="exit" transition={SECTION_TRANSITION} sx={{ mt: 2 }}>
+              <LastBeforeSleep />
+            </MotionBox>
+          )}
+
+          {/* ❤️ Final Secret Page Tab */}
+          {activeTab === "secret" && (
+            <MotionBox key="secret" variants={SECTION_MOTION} initial="hidden" animate="visible" exit="exit" transition={SECTION_TRANSITION} sx={{ mt: 2 }}>
+              <FinalSecretPage />
+            </MotionBox>
+          )}
+        </AnimatePresence>
 
         {/* Digital Love Notes Jar Drawer */}
         <Box sx={{ py: 6, position: "relative", zIndex: 1, textAlign: "center" }}>
