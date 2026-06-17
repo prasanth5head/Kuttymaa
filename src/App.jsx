@@ -1471,6 +1471,8 @@ export default function App() {
   const [currentReason, setCurrentReason] = useState("");
   const [reasonsDialogOpen, setReasonsDialogOpen] = useState(false);
   const [vaultPassword, setVaultPassword] = useState("");
+  const [vaultPin, setVaultPin] = useState("");
+  const [vaultPinRequired, setVaultPinRequired] = useState(false);
   const [vaultUnlocked, setVaultUnlocked] = useState(false);
   const [vaultError, setVaultError] = useState("");
   const [randomThought, setRandomThought] = useState("");
@@ -1508,12 +1510,22 @@ export default function App() {
 
   // Vault unlock handler
   const handleUnlockVault = () => {
-    const pw = vaultPassword.trim().toLowerCase();
-    if (pw === "kuttymaa" || pw === "jessy" || pw === "kutty" || pw === "k" || pw === "j") {
-      setVaultUnlocked(true);
-      setVaultError("");
+    if (!vaultPinRequired) {
+      const pw = vaultPassword.trim();
+      if (pw.toLowerCase() === "kuttymaa") {
+        setVaultPinRequired(true);
+        setVaultError("Nice! Now enter the pin 250824 to unlock the vault.");
+      } else {
+        setVaultError("Please enter it exactly to continue.");
+      }
     } else {
-      setVaultError("Hmm, that's not right. Try again! 💕");
+      const pin = vaultPin.trim();
+      if (pin === "250824") {
+        setVaultUnlocked(true);
+        setVaultError("");
+      } else {
+        setVaultError("Pin is incorrect. Please enter 250824.");
+      }
     }
   };
 
@@ -2811,12 +2823,12 @@ export default function App() {
                       🔒 Vault of Secrets
                     </Typography>
                     <Typography variant="body2" sx={{ color: "rgba(255,255,255,0.6)", mb: 3 }}>
-                      Unlock to read what I admire most, what scares me, and the exact moment I fell. Hint: starts with k or j.
+                      Unlock to read what I admire most, what scares me, and the exact moment We Begin. 
                     </Typography>
                     <TextField
-                      placeholder="Enter nickname..."
-                      value={vaultPassword}
-                      onChange={(e) => setVaultPassword(e.target.value)}
+                      placeholder={vaultPinRequired ? "Guess when We begins..." : "Guess What I Love Most About You..."}
+                      value={vaultPinRequired ? vaultPin : vaultPassword}
+                      onChange={(e) => vaultPinRequired ? setVaultPin(e.target.value) : setVaultPassword(e.target.value)}
                       size="small"
                       sx={{
                         bgcolor: "rgba(255,255,255,0.1)",
