@@ -2465,7 +2465,27 @@ export default function App() {
               <Grid item xs={12} md={6}>
                 <Card sx={{ p: 4, borderRadius: 6, background: "rgba(255,255,255,0.9)", border: "1.5px solid rgba(255,255,255,0.6)", height: "100%" }}>
                   <Typography variant="h6" color="#d81b60" fontWeight="bold" gutterBottom sx={{ fontFamily: "'Outfit', sans-serif" }}>
-                    😂 Things Kuttymaa Does (Affectionate Roasts)
+                    � Contact Info
+                  </Typography>
+                  <Box sx={{ display: "flex", flexDirection: "column", gap: 2, mt: 2 }}>
+                    {[
+                      { name: "Kuttymaa", number: "8778326686", label: "Her number" },
+                      { name: "Prasanth", number: "9597416792", label: "My number" }
+                    ].map((contact) => (
+                      <Box key={contact.name} sx={{ p: 2, bgcolor: "rgba(255, 64, 129, 0.04)", borderRadius: 4, border: "1px solid rgba(233,30,99,0.12)" }}>
+                        <Typography variant="subtitle1" fontWeight="bold" color="#c2185b">{contact.name}</Typography>
+                        <Typography variant="body2" color="#555">{contact.number}</Typography>
+                        <Typography variant="caption" color="#777">{contact.label}</Typography>
+                      </Box>
+                    ))}
+                  </Box>
+                </Card>
+              </Grid>
+
+              <Grid item xs={12} md={6}>
+                <Card sx={{ p: 4, borderRadius: 6, background: "rgba(255,255,255,0.9)", border: "1.5px solid rgba(255,255,255,0.6)", height: "100%" }}>
+                  <Typography variant="h6" color="#d81b60" fontWeight="bold" gutterBottom sx={{ fontFamily: "'Outfit', sans-serif" }}>
+                    �😂 Things Kuttymaa Does (Affectionate Roasts)
                   </Typography>
                   <Box sx={{ display: "flex", flexDirection: "column", gap: 1.5, mt: 2 }}>
                     {[
