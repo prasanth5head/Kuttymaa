@@ -2354,7 +2354,7 @@ export default function App() {
                     ))}
                   </Grid>
                   <Typography align="center" sx={{ color: "#777", mt: 3, fontFamily: "'Outfit', sans-serif", fontSize: "0.95rem" }}>
-                    Since April 4, 2025 ❤️
+                    Since 25 Aug 2024 ❤️
                   </Typography>
                 </Card>
               </Grid>
@@ -2553,7 +2553,7 @@ export default function App() {
                          💕 Forever yours,
                        </Typography>
                        <Typography variant="body2" sx={{ color: "#c2185b", fontFamily: "'Pacifico', cursive", fontSize: "1.3rem", mt: 1 }}>
-                         Your Aham
+                         Your Anbanavan ❣️
                        </Typography>
                      </Box>
                    </Box>
