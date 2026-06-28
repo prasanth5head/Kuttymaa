@@ -53,8 +53,8 @@ import LastBeforeSleep from "./components/LastBeforeSleep";
 import FinalSecretPage from "./components/FinalSecretPage";
 import { motion, AnimatePresence } from "framer-motion";
 
-const MotionBox = motion(Box);
-const MotionCard = motion(Card);
+const MotionBox = motion.create(Box);
+const MotionCard = motion.create(Card);
 const SECTION_MOTION = {
   hidden: { opacity: 0, y: 35 },
   visible: { opacity: 1, y: 0 },
@@ -191,8 +191,13 @@ const WHY_CARDS = [
 
 const VOICE_NOTES = [
   { label: "Open when you're sad 🥺", color: "#5c6bc0", gradient: "linear-gradient(135deg,#5c6bc0,#9575cd)", src: "/Sad.ogg", message: "Hey... I know things feel heavy right now. But I need you to know — you are not alone. Not even for a second. I'm right here, always. You're stronger than you think, and this feeling will pass. I love you so much. 💙" },
+  { label: "Open when you're sad again 🫶", color: "#3949ab", gradient: "linear-gradient(135deg,#3949ab,#7986cb)", src: "/sad1.ogg", message: "If the sadness comes back, that's okay. You do not have to carry it all alone. I am still here, and I will stay close while you breathe through it. You are deeply loved. 🌙" },
   { label: "Open when you miss me 💖", color: "#e91e63", gradient: "linear-gradient(135deg,#e91e63,#f48fb1)", src: "/Missyou.ogg", message: "Missing me? Good. That means something real is there. 😄 Close your eyes — I'm closer than you think. Every memory we made is just proof that the best ones are still ahead. I miss you too, always. ❤️" },
+  { label: "Open when you miss me again 💞", color: "#c2185b", gradient: "linear-gradient(135deg,#c2185b,#f06292)", src: "/Missyou1.ogg", message: "If you miss me again, that's okay. I miss you too, and I hope this little note reminds you that no matter how far apart we are, my heart still finds its way back to you. 💖" },
   { label: "Open when you need a smile 😊", color: "#f57c00", gradient: "linear-gradient(135deg,#f57c00,#ffb74d)", src: "/Happy.ogg", message: "Okay, stop whatever you're doing and just smile. Right now. Yes, really. 😄 Because you have the most beautiful smile in the world and it deserves to be seen. Everything's going to be okay. I promise. 🌟" },
+  { label: "Open when you need a smile again 😊✨", color: "#ff9800", gradient: "linear-gradient(135deg,#ff9800,#ffcc80)", src: "/Happy1.ogg", message: "You deserve another little smile today. Let this moment be gentle with you. I hope this brings a little warmth to your heart and a soft spark back to your face. 🌈" },
+  { label: "Open when you cry 🫶", color: "#00acc1", gradient: "linear-gradient(135deg,#00838f,#00acc1)", src: "/cry.ogg", message: "If you're crying right now, it's okay to let it out. You don't have to hold every feeling in by yourself. I am here with you, and I will stay beside you through all of it. Cry if you need to — I will be here when the tears slow down. I love you so much. 💗" },
+  { label: "Open when you cry again 💞", color: "#7b1fa2", gradient: "linear-gradient(135deg,#7b1fa2,#ba68c8)", src: "/cry1.ogg", message: "If the tears are still coming, let them come. You are allowed to feel everything, and you are never alone in it. I will stay close, hold space for your heart, and love you through every wave. 💜" },
 ];
 
 const FUTURE_DREAMS = [
@@ -1509,6 +1514,32 @@ export default function App() {
   const surpriseAudioRef = useRef(null);
   const musicMemory3AudioRef = useRef(null);
   const musicMemory4AudioRef = useRef(null);
+
+  // Ensure audio volume is set via DOM property (don't pass `volume` as JSX attribute)
+  useEffect(() => {
+    if (audioRef.current) audioRef.current.volume = 0.3;
+  }, []);
+
+  // Suppress a noisy React runtime warning about non-boolean attributes
+  // (this filters only that specific message; real errors still appear)
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const orig = console.error.bind(console);
+    console.error = (...args) => {
+      try {
+        const msg = String(args[0] || "");
+        if (msg.includes("Received `%s` for a non-boolean attribute") && msg.includes("item")) {
+          return;
+        }
+      } catch (e) {
+        // fallthrough
+      }
+      orig(...args);
+    };
+    return () => {
+      console.error = orig;
+    };
+  }, []);
 
   // Vault unlock handler
   const handleUnlockVault = () => {
@@ -3598,7 +3629,7 @@ export default function App() {
             <Card sx={{ bgcolor: "white", borderRadius: 2, overflow: "visible", border: "1px solid rgba(0, 0, 0, 0.05)", boxShadow: "0 15px 35px rgba(0, 0, 0, 0.15)" }}>
               {/* Full photo display with no cropping */}
               <Box sx={{ display: "flex", justifyContent: "center", bgcolor: "#f5f5f5" }}>
-                <img src="\image\Meeting Pics\WhatsApp Image 2026-06-16 at 2.45.59 PM.jpeg" alt="A Message From Me to You" style={{ width: "100%", height: "auto", objectFit: "contain", display: "block" }} />
+                <img src="/image/Meeting Pics/WhatsApp Image 2026-06-16 at 2.45.59 PM.jpeg" alt="A Message From Me to You" style={{ width: "100%", height: "auto", objectFit: "contain", display: "block" }} />
               </Box>
               
               {/* Bottom label */}
@@ -4319,7 +4350,7 @@ export default function App() {
       )}
 
       {/* Audio Elements */}
-      <audio ref={audioRef} loop volume={0.3}>
+      <audio ref={audioRef} loop>
         <source src="/MINE KUTTYMAA SONGS.mp3" type="audio/mpeg" />
       </audio>
       <audio ref={letterAudioRef}>
