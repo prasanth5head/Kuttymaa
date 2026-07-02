@@ -5,6 +5,27 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>For My Lovely Girlfriend ❤️</title>
+    <!-- Google Analytics 4 integration: add your real Measurement ID in the env file or Netlify settings. -->
+    <script>
+      window.__GA4_MEASUREMENT_ID__ = window.__GA4_MEASUREMENT_ID__ || "%VITE_GA_MEASUREMENT_ID%" || "";
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        window.dataLayer.push(arguments);
+      }
+      window.gtag = gtag;
+
+      const measurementId = window.__GA4_MEASUREMENT_ID__;
+      const hasRealMeasurementId = Boolean(measurementId && measurementId.startsWith("G-") && !measurementId.includes("REPLACE_WITH_YOUR"));
+
+      if (hasRealMeasurementId) {
+        const gtagScript = document.createElement("script");
+        gtagScript.async = true;
+        gtagScript.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
+        document.head.appendChild(gtagScript);
+        gtag("js", new Date());
+        gtag("config", measurementId, { send_page_view: false });
+      }
+    </script>
     <!-- Preconnect to Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

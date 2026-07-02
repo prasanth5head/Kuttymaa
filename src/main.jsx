@@ -17,13 +17,50 @@ if (import.meta.env && import.meta.env.DEV && typeof window !== 'undefined') {
   };
 }
 
-import { StrictMode } from 'react'
+import { StrictMode, useEffect } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
+import { trackPageView } from './analytics.js'
+
+// `trackPageView` is provided by `src/analytics.js` and wraps `gtag` safely.
+
+const AnalyticsBootstrap = () => {
+  useEffect(() => {
+    const handlePageChange = () => trackPageView();
+
+    trackPageView();
+
+    const originalPushState = window.history.pushState;
+    const originalReplaceState = window.history.replaceState;
+
+    window.history.pushState = function patchedPushState(...args) {
+      originalPushState.apply(this, args);
+      handlePageChange();
+    };
+
+    window.history.replaceState = function patchedReplaceState(...args) {
+      originalReplaceState.apply(this, args);
+      handlePageChange();
+    };
+
+    window.addEventListener('popstate', handlePageChange);
+    window.addEventListener('hashchange', handlePageChange);
+
+    return () => {
+      window.history.pushState = originalPushState;
+      window.history.replaceState = originalReplaceState;
+      window.removeEventListener('popstate', handlePageChange);
+      window.removeEventListener('hashchange', handlePageChange);
+    };
+  }, []);
+
+  return null;
+};
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    <AnalyticsBootstrap />
     <App />
   </StrictMode>,
 )
