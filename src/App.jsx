@@ -51,6 +51,7 @@ import HugSimulator from "./components/HugSimulator";
 import AlternateEndings from "./components/AlternateEndings";
 import LastBeforeSleep from "./components/LastBeforeSleep";
 import FinalSecretPage from "./components/FinalSecretPage";
+import NotesVault from "./components/NotesVault";
 import { motion, AnimatePresence } from "framer-motion";
 
 const MotionBox = motion.create(Box);
@@ -2327,6 +2328,7 @@ export default function App() {
             { id: "home", label: "🏠 Home & Stats" },
             { id: "memories", label: "🎬 Memory Lane" },
             { id: "vault", label: "💌 Love Vault" },
+            { id: "notes", label: "📝 Notes" },
             { id: "journey", label: "✨ Our Journey" },
             { id: "arcade", label: "🕹️ Arcade Hub" },
             { id: "cosmos", label: "🌌 Sky & Map" },
@@ -3077,6 +3079,13 @@ export default function App() {
                 )}
               </Card>
             </Box>
+          </MotionBox>
+        )}
+
+        {/* Notes Tab Panel */}
+        {activeTab === "notes" && (
+          <MotionBox key="notes" variants={SECTION_MOTION} initial="hidden" animate="visible" exit="exit" transition={SECTION_TRANSITION} sx={{ mt: 2 }}>
+            <NotesVault />
           </MotionBox>
         )}
 
